@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Help & FAQs - NSC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <style>
+        /* ASTIG UI TWEAKS FOR FAQ */
+        .faq-card {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        /* Hover Effect (Umaangat) - Desktop View */
+        .faq-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(15, 32, 75, 0.1);
+            border-left: 5px solid #fbbf24; /* Gold Accent */
+        }
+
+        /* Accordion Header Styles */
+        .accordion-button {
+            font-weight: 600;
+            color: #0f204b;
+            background-color: white;
+            box-shadow: none !important;
+            padding: 20px;
+            border-radius: 15px !important;
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: #0f204b;
+            background-color: #fffbeb; /* Light Gold BG */
+            border-bottom: 1px solid #eee;
+            border-bottom-left-radius: 0 !important;
+            border-bottom-right-radius: 0 !important;
+        }
+
+        .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230f204b'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+
+        /* Answer Body */
+        .accordion-body {
+            color: #64748b;
+            line-height: 1.6;
+            padding: 20px;
+            font-size: 0.95rem;
+        }
+
+        /* --- MOBILE VIEW SPECIFIC STYLES (Max-width 767.98px for sm/md breakpoints) --- */
+        @media (max-width: 767.98px) {
+            /* Navbar adjustments for smaller screens */
+            .navbar .container {
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+            }
+            .navbar-brand img {
+                height: 35px !important; /* Slightly smaller logo */
+            }
+            .navbar .brand-text {
+                font-size: 0.9rem; /* Smaller Help Center text */
+            }
+            .navbar .profile-btn {
+                font-size: 0.8rem; /* Smaller Dashboard link */
+            }
+
+            /* Dashboard Hero Section adjustments */
+            .dashboard-hero {
+                padding: 40px 0 100px 0 !important; /* Reduced vertical padding */
+                margin-bottom: -50px !important;
+            }
+            .dashboard-hero h1 {
+                font-size: 2rem !important; /* Smaller main heading */
+            }
+            .dashboard-hero p {
+                font-size: 0.9rem !important; /* Smaller subheading */
+            }
+
+            /* Main Content Container padding */
+            .container {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+
+            /* FAQ Card Readability Enhancements */
+            .accordion-button {
+                padding: 15px !important; /* Reduced padding */
+                font-size: 0.95rem; /* Ensure good size for the question text */
+            }
+
+            .accordion-body {
+                padding: 15px !important; /* Reduced padding */
+                font-size: 1rem !important; /* **Made answer text slightly bigger for better readability** */
+                line-height: 1.5; /* Good line height */
+            }
+
+            /* Remove hover effect on touch devices */
+             .faq-card:hover {
+                transform: none;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+                border-left: none;
+            }
+
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: #0f204b;">
+    <div class="container px-4">
+        <a class="navbar-brand d-flex align-items-center" href="/student/dashboard.htm">
+            <img src="/assets/img/logo.png" onerror="this.src='https://via.placeholder.com/50?text=LOGO'" height="40" class="me-2 rounded-circle" style="border: 2px solid rgba(255,255,255,0.2);">
+            <span class="brand-text" style="font-weight: 700; color: white;">HELP CENTER</span>
+        </a>
+        <div class="ms-auto">
+            <a href="/student/dashboard.htm" class="profile-btn" style="text-decoration: none; color: rgba(255,255,255,0.8); font-weight: 600;">
+                <i class="fas fa-arrow-left me-2"></i> Dashboard
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="dashboard-hero" style="background: linear-gradient(135deg, #030b18 0%, #0f204b 100%); padding: 60px 0 120px 0; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; color: white; margin-bottom: -60px; text-align: center;">
+    <div class="container">
+        <h1 class="fw-bold" style="font-size: 2.5rem;">Frequently Asked Questions</h1>
+        <p style="opacity: 0.8; font-size: 1rem;">Find answers to common questions about document requests.</p>
+    </div>
+</div>
+
+<div class="container pb-5" style="margin-top: 40px;">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div class="accordion" id="faqAccordion">
+
+                <div class="accordion-item faq-card">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                            <i class="fas fa-clock me-3 text-warning"></i> How long does it take to process a request?
+                        </button>
+                    </h2>
+                    <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Standard processing time is <strong>3-5 working days</strong> upon approval. You can check the real-time progress of your document via the <a href="track.htm">Track Status</a> page. We will notify you (Approved Status) once a pickup schedule is set.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item faq-card">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                            <i class="fas fa-copy me-3 text-primary"></i> Can I request multiple documents at once?
+                        </button>
+                    </h2>
+                    <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, you can submit multiple requests. However, each document type must be requested separately to generate a unique <strong>Transaction Code</strong> for easier tracking.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item faq-card">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                            <i class="fas fa-user-check me-3 text-success"></i> What should I bring when claiming?
+                        </button>
+                    </h2>
+                    <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Please bring the following:
+                            <ul class="mt-2">
+                                <li>Your valid <strong>School ID</strong>.</li>
+                                <li>A screenshot or printout of your <strong>Transaction Code</strong> (showing Approved status).</li>
+                                <li>Official Receipt (if payment was required).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item faq-card">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                            <i class="fas fa-user-shield me-3 text-danger"></i> Can someone else claim my documents?
+                        </button>
+                    </h2>
+                    <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes. If you cannot claim it personally, your representative must present an <strong>Authorization Letter</strong> signed by you, a copy of your ID, and their own valid ID.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item faq-card">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+                            <i class="fas fa-money-bill-wave me-3 text-info"></i> Is there a fee for the documents?
+                        </button>
+                    </h2>
+                    <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Some documents (like TOR and Diploma reprints) may require a fee. You will be advised by the Registrar's Office regarding payment details once your request is initially reviewed.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item faq-card">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6">
+                            <i class="fas fa-exclamation-circle me-3 text-secondary"></i> I made a mistake in my request. What should I do?
+                        </button>
+                    </h2>
+                    <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            If your request is still "Pending", you may contact the Registrar's Office immediately via the details in the <a href="settings.htm">Settings</a> page to cancel or correct it. If it is already "Approved", the document has likely been printed and cannot be changed without a new request.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer style="background: white; padding: 20px 0; text-align: center; margin-top: 30px; border-top: 1px solid #eee;">
+    <div class="container text-muted small">© 2025 Northern Samar Colleges. All Rights Reserved.</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // Session Check only
+        const studentId = localStorage.getItem('nsc_student_id');
+        if (!studentId) {
+            alert("Session expired. Please login again.");
+            window.location.href = '/login_student.htm';
+        }
+
+        // Update links
+        $('a[href="request.htm"]').attr('href', 'request.htm?id=' + studentId);
+        $('a[href="track.htm"]').attr('href', 'track.htm?id=' + studentId);
+        $('a[href="settings.htm"]').attr('href', 'settings.htm?id=' + studentId);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Login - NSC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* Specific Override for Registrar (Gold Theme) */
+        .login-body { background-color: #050a14; color: white; height: 100vh; overflow: hidden; }
+        .left-panel { background: linear-gradient(135deg, #0f204b 0%, #3a2202 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 50px; text-align: center; height: 100vh; }
+        .right-panel { background: #0b1120; display: flex; align-items: center; justify-content: center; position: relative; height: 100vh; }
+        .login-box { width: 100%; max-width: 400px; padding: 40px; z-index: 2; }
+        .hero-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; animation: float 8s infinite ease-in-out; }
+        .hb-1 { width: 300px; height: 300px; background: rgba(251, 191, 36, 0.2); top: -50px; left: -50px; }
+        .hb-2 { width: 400px; height: 400px; background: rgba(42, 91, 215, 0.2); bottom: -100px; right: -100px; animation-delay: 1s; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+        .btn-registrar {
+            background: linear-gradient(90deg, #d97706, #fbbf24);
+            border: none; border-radius: 50px; width: 100%; padding: 15px;
+            font-weight: 700; text-transform: uppercase; margin-top: 10px;
+            color: #0f204b; transition: 0.3s;
+        }
+        .btn-registrar:hover {
+            transform: translateY(-2px); box-shadow: 0 15px 30px rgba(251, 191, 36, 0.3);
+            background: linear-gradient(90deg, #fbbf24, #fcd34d);
+        }
+
+        .form-control-dark { background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 50px; padding: 15px 20px 15px 50px; color: white; transition: 0.3s; }
+        .form-control-dark:focus { border-color: #fbbf24; outline: none; background: rgba(255,255,255,0.1); color: white; }
+        .input-wrapper { position: relative; }
+        .input-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #94a3b8; }
+        .form-control-dark:focus + .input-icon { color: #fbbf24; }
+    </style>
+</head>
+<body class="login-body">
+
+<div class="row g-0">
+    <div class="col-lg-6 left-panel d-none d-lg-flex">
+        <div class="hero-blob hb-1"></div>
+        <div class="hero-blob hb-2"></div>
+
+        <div class="welcome-text position-relative z-2">
+            <img src="assets/img/logo.png" style="width: 120px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.2); margin-bottom: 30px; box-shadow: 0 0 30px rgba(251, 191, 36, 0.4);" onerror="this.src='https://via.placeholder.com/120?text=LOGO'">
+            <h1 style="font-weight: 800; font-size: 3.5rem; line-height: 1.2;">REGISTRAR</h1>
+            <h3 style="color: #fbbf24; font-weight: 600; letter-spacing: 2px;">MANAGEMENT PORTAL</h3>
+            <p style="margin-top: 20px; font-weight: 300; opacity: 0.8; max-width: 400px;">
+                Authorized Personnel Only. Manage records and verify documents securely.
+            </p>
+        </div>
+    </div>
+
+    <div class="col-lg-6 right-panel">
+        <a href="home.htm" style="position: absolute; top: 30px; left: 30px; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.9rem;">
+            <i class="fas fa-arrow-left me-2"></i> Back to Website
+        </a>
+
+        <div class="login-box">
+            <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 10px;">Registrar Login</h2>
+            <p style="color: #94a3b8; margin-bottom: 30px; font-size: 0.9rem;">Enter your official credentials.</p>
+
+            <div id="errorMsg" class="alert alert-danger d-none rounded-pill text-center py-2 text-small"></div>
+
+            <form id="registrarForm">
+                <div class="mb-4">
+                    <label class="small text-muted ms-3 mb-1">Registrar ID</label>
+                    <div class="input-wrapper">
+                        <input type="text" name="reg_id" class="form-control form-control-dark" placeholder="e.g. 102384" required>
+                        <i class="fas fa-user-shield input-icon"></i>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="small text-muted ms-3 mb-1">Birthdate (Password)</label>
+                    <div class="input-wrapper">
+                        <input type="date" name="birthdate" class="form-control form-control-dark" required>
+                    </div>
+                </div>
+
+                <div class="form-check mb-4 ms-2">
+                    <input class="form-check-input bg-transparent border-secondary" type="checkbox" id="remember">
+                    <label class="form-check-label small text-muted" for="remember">Keep me logged in</label>
+                </div>
+
+                <button type="submit" class="btn btn-registrar" id="loginBtn">
+                    Access Dashboard <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#registrarForm').submit(function(e){
+            e.preventDefault();
+
+            // UI Loading State
+            $('#loginBtn').html('<i class="fas fa-spinner fa-spin"></i> Verifying...').prop('disabled', true);
+            $('#errorMsg').addClass('d-none');
+
+            $.ajax({
+                url: '/api/auth/registrar-login',
+                type: 'POST',
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function(res){
+                    if(res.status == 'success'){
+                        window.location.href = 'registrar/dashboard.htm';
+                    } else {
+                        $('#errorMsg').text(res.message).removeClass('d-none');
+                        $('#loginBtn').html('Access Dashboard <i class="fas fa-arrow-right ms-2"></i>').prop('disabled', false);
+                    }
+                },
+                error: function() {
+                    $('#errorMsg').text("System Error. Please try again.").removeClass('d-none');
+                    $('#loginBtn').html('Access Dashboard <i class="fas fa-arrow-right ms-2"></i>').prop('disabled', false);
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

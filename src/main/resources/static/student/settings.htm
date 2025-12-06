@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Settings - NSC Student</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <style>
+        /* RESTORED UI STYLES */
+        :root { --primary: #0f204b; --gold: #fbbf24; --bg: #f0f4f8; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: #334155; }
+
+        /* Navbar */
+        .navbar { background: var(--primary) !important; padding: 12px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+        .brand-text { color: white; font-weight: 700; letter-spacing: 1px; font-size: 1.1rem; text-transform: uppercase; }
+        .profile-btn { text-decoration: none; color: rgba(255,255,255,0.8) !important; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .profile-btn:hover { color: var(--gold) !important; }
+
+        /* Page Header (Curved) */
+        .page-header {
+            background: linear-gradient(135deg, #030b18 0%, #0f204b 100%);
+            padding: 50px 0 100px 0; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
+            color: white; margin-bottom: -60px; text-align: center; position: relative;
+        }
+
+        /* Container Card */
+        .settings-container {
+            background: white; border-radius: 25px; padding: 40px;
+            box-shadow: 0 10px 40px rgba(15, 32, 75, 0.05); max-width: 600px; margin: 0 auto;
+            position: relative; z-index: 10;
+        }
+
+        /* Profile Picture */
+        .profile-pic {
+            width: 110px; height: 110px; background: white; border-radius: 50%;
+            margin: 0 auto 15px auto; padding: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .profile-pic img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+
+        /* Form Elements */
+        .form-label { font-size: 0.75rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 5px; }
+
+        .input-locked {
+            background: #f1f5f9; border: 1px solid #e2e8f0; color: #64748b;
+            border-radius: 12px; padding: 12px 15px; cursor: not-allowed;
+        }
+
+        .input-edit {
+            background: white; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px 15px; transition: 0.3s;
+        }
+        .input-edit:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1); }
+
+        .btn-save {
+            background: var(--primary); color: white; border-radius: 50px; padding: 15px;
+            border: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+            transition: 0.3s; width: 100%; margin-top: 30px; display: block;
+            box-shadow: 0 5px 15px rgba(15, 32, 75, 0.2);
+        }
+        .btn-save:hover { background: #1e3a8a; transform: translateY(-2px); }
+
+        /* --- MOBILE VIEW SPECIFIC STYLES (Max-width 767.98px) --- */
+        @media (max-width: 767.98px) {
+
+            /* Navbar adjustments */
+            .navbar .container {
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+            }
+            .navbar-brand img {
+                height: 35px !important; /* Slightly smaller logo */
+            }
+            .brand-text {
+                font-size: 0.9rem; /* Smaller Profile Settings text */
+            }
+            .profile-btn {
+                font-size: 0.8rem; /* Smaller Dashboard link */
+            }
+
+            /* Page Header adjustments */
+            .page-header {
+                padding: 30px 0 80px 0 !important; /* Reduced vertical padding */
+                margin-bottom: -50px !important;
+                border-bottom-left-radius: 30px;
+                border-bottom-right-radius: 30px;
+            }
+            .profile-pic {
+                width: 90px; /* Smaller profile picture */
+                height: 90px;
+            }
+            #header-name {
+                font-size: 1.5rem; /* Ensure name is readable but not too large */
+            }
+            #header-prog {
+                font-size: 0.7rem;
+            }
+
+            /* Settings Container Card adjustments */
+            .settings-container {
+                border-radius: 15px;
+                padding: 25px; /* Reduced internal padding */
+                margin: 0 10px; /* Ensure card doesn't touch screen edges */
+            }
+
+            /* Form Element Readability/Sizing */
+            .form-label {
+                font-size: 0.7rem;
+            }
+
+            .form-control, .input-group-text {
+                padding: 10px 12px !important; /* Reduced input padding */
+                font-size: 0.9rem !important; /* Ensure input text is readable */
+                border-radius: 8px !important; /* Slightly smaller border radius */
+            }
+
+            /* Save Button */
+            .btn-save {
+                padding: 12px; /* Reduced button padding */
+                font-size: 0.9rem;
+                margin-top: 20px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container px-4">
+        <a class="navbar-brand d-flex align-items-center" href="/student/dashboard.htm">
+            <img src="/assets/img/logo.png" onerror="this.src='https://via.placeholder.com/50?text=LOGO'" height="40" class="me-2 rounded-circle" style="border: 2px solid rgba(255,255,255,0.2);">
+            <span class="brand-text">PROFILE SETTINGS</span>
+        </a>
+        <div class="ms-auto">
+            <a href="/student/dashboard.htm" class="profile-btn">
+                <i class="fas fa-arrow-left me-2"></i> Dashboard
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="page-header">
+    <div class="profile-pic">
+        <img src="/assets/img/logo.png" id="settings-profile-pic">
+    </div>
+    <h3 class="fw-bold mb-0" id="header-name">Loading...</h3>
+    <p class="opacity-75 small text-uppercase" style="letter-spacing: 1px;" id="header-prog">...</p>
+</div>
+
+<div class="container pb-5">
+    <div class="settings-container">
+
+        <form id="profileForm">
+            <input type="hidden" name="student_id" id="form-id">
+
+            <div style="border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 20px;">
+                <i class="fas fa-lock me-2 text-warning"></i><span style="font-weight: 700; color: #0f204b;">OFFICIAL RECORDS</span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Student ID</label>
+                <input type="text" class="form-control input-locked" id="display-id" readonly>
+            </div>
+            <div class="mb-4">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control input-locked" id="display-name" readonly>
+            </div>
+
+            <div style="border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 20px; margin-top: 30px;">
+                <i class="fas fa-pen me-2 text-primary"></i><span style="font-weight: 700; color: #0f204b;">CONTACT INFO</span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email Address</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0"><i class="fas fa-envelope text-muted"></i></span>
+                    <input type="email" name="email" id="input-email" class="form-control input-edit border-start-0" required>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Mobile Number</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0"><i class="fas fa-phone text-muted"></i></span>
+                    <input type="text" name="phone" id="input-phone" class="form-control input-edit border-start-0" required>
+                </div>
+            </div>
+
+            <button type="submit" id="saveBtn" class="btn-save">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        const studentId = localStorage.getItem('nsc_student_id');
+        if(studentId) {
+            // Fetch Data + Picture
+            $.ajax({
+                url: '/api/registrar/student/' + studentId,
+                type: 'GET',
+                success: function(res){
+                    if(res.status === 'success'){
+                        const s = res.student;
+                        $('#header-name').text(s.firstname + ' ' + s.lastname);
+                        $('#header-prog').text(s.program);
+                        $('#form-id').val(s.studentId);
+                        $('#display-id').val(s.studentId);
+                        $('#display-name').val(s.firstname + ' ' + s.lastname);
+                        $('#input-email').val(s.email);
+                        $('#input-phone').val(s.phone);
+
+                        // UPDATE PICTURE
+                        if (s.profilePic) {
+                            $('#settings-profile-pic').attr('src', s.profilePic);
+                        }
+                    }
+                }
+            });
+
+            // Submit Update
+            $('#profileForm').submit(function(e){
+                e.preventDefault();
+                $.ajax({
+                    url: '/api/registrar/student/update',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    success: function(res){ alert(res.message); location.reload(); }
+                });
+            });
+        } else { window.location.href = '/login_student.htm'; }
+    });
+</script>
+
+</body>
+</html>

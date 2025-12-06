@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard - NSC</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <style>
+        /* Map Styles */
+        .map-container-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            background: white;
+            padding: 10px;
+            margin-top: 40px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .map-frame {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            border: 0;
+        }
+        .btn-directions {
+            background-color: #ea4335; color: white; font-weight: 700;
+            padding: 10px 30px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px;
+            display: inline-block; margin-top: 15px; text-decoration: none; font-size: 0.85rem;
+            box-shadow: 0 5px 15px rgba(234, 67, 53, 0.4); transition: 0.3s;
+        }
+        .btn-directions:hover { background-color: #c5221f; transform: translateY(-2px); color: white; }
+
+        /* Menu Card Hover Effect for Desktop */
+        .menu-card.transition-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(15, 32, 75, 0.1) !important;
+            border-color: #fbbf24 !important;
+        }
+
+        /* --- MOBILE VIEW SPECIFIC STYLES (Max-width 767.98px) --- */
+        @media (max-width: 767.98px) {
+
+            /* Navbar adjustments */
+            .navbar .container {
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+            }
+            .navbar-brand img {
+                height: 35px !important; /* Smaller logo */
+            }
+            .brand-text {
+                font-size: 0.9rem !important; /* Smaller text */
+            }
+            .profile-btn .profile-avatar {
+                width: 30px !important;
+                height: 30px !important;
+            }
+            .profile-btn .d-md-inline {
+                display: none !important; /* Hide 'Logout' text on smaller screens */
+            }
+
+            /* Dashboard Hero adjustments */
+            .dashboard-hero {
+                padding: 30px 0 100px 0 !important; /* Reduced vertical padding */
+                margin-bottom: -50px !important;
+                border-bottom-left-radius: 30px;
+                border-bottom-right-radius: 30px;
+            }
+            .hero-content {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+            .welcome-title {
+                font-size: 2rem !important; /* Smaller main heading */
+            }
+            .welcome-sub {
+                font-size: 0.8rem;
+            }
+
+            /* Stat Piles */
+            .stat-pill {
+                padding: 8px 15px !important; /* Reduced padding */
+            }
+            .stat-value {
+                font-size: 0.9rem;
+            }
+
+            /* Main Container Padding */
+            .main-container {
+                margin-top: 60px !important;
+            }
+
+            /* Menu Card Adjustments */
+            .menu-card {
+                padding: 20px !important; /* Reduced card padding */
+                border-radius: 15px !important;
+            }
+            .menu-card:hover {
+                 transform: none; /* Disable hover transition on mobile */
+            }
+            .menu-title {
+                font-size: 1.1rem; /* Ensure title is readable */
+            }
+            .menu-desc {
+                font-size: 0.85rem !important; /* Ensure description is readable */
+            }
+
+            /* Map Section Adjustments */
+            .map-container-card {
+                margin-top: 20px;
+                padding: 8px; /* Reduced card padding */
+                border-radius: 15px;
+            }
+            .map-frame {
+                height: 250px; /* Shorter map frame */
+                border-radius: 10px;
+            }
+            .btn-directions {
+                font-size: 0.8rem;
+                padding: 8px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: #0f204b;">
+    <div class="container px-4">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="/assets/img/logo.png" onerror="this.src='https://via.placeholder.com/50?text=LOGO'" height="40" class="me-2 rounded-circle" style="border: 2px solid rgba(255,255,255,0.2);">
+            <span class="brand-text" style="font-weight: 700; color: white;">NSC Portal</span>
+        </a>
+        <div class="ms-auto">
+            <a href="/login_student.htm" class="profile-btn" style="text-decoration: none; color: rgba(255,255,255,0.8); font-weight: 600;">
+                <img src="/assets/img/logo.png" id="nav-profile-pic" class="profile-avatar me-2 rounded-circle" style="width: 35px; height: 35px; object-fit: cover; border: 2px solid rgba(255,255,255,0.5);">
+                <span class="d-none d-md-inline">Logout</span>
+                <i class="fas fa-sign-out-alt ms-2"></i>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="dashboard-hero" style="background: linear-gradient(135deg, #030b18 0%, #0f204b 100%); padding: 60px 0 120px 0; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; color: white; margin-bottom: -60px;">
+    <div class="container px-4 hero-content">
+        <div class="row align-items-end">
+            <div class="col-lg-8">
+                <div class="welcome-sub text-uppercase fw-bold text-warning mb-2">
+                    <i class="fas fa-calendar-check me-2"></i> Online Appointment System
+                </div>
+                <h1 class="welcome-title" style="font-weight: 800; font-size: 2.5rem;">Welcome back,<br><span id="dynamic-name">Student</span>!</h1>
+
+                <div class="d-flex flex-wrap gap-3 mt-3">
+                    <div class="stat-pill bg-white text-dark px-3 py-2 rounded-pill d-flex align-items-center gap-2 shadow-sm">
+                        <i class="fas fa-id-card text-warning"></i>
+                        <div>
+                            <div class="stat-value fw-bold" id="dynamic-id">...</div>
+                            <div class="stat-label small text-muted" style="font-size: 0.7rem;">Student ID</div>
+                        </div>
+                    </div>
+                    <div class="stat-pill bg-white text-dark px-3 py-2 rounded-pill d-flex align-items-center gap-2 shadow-sm">
+                        <i class="fas fa-laptop-code text-info"></i>
+                        <div>
+                            <div class="stat-value fw-bold" id="dynamic-program">...</div>
+                            <div class="stat-label small text-muted" style="font-size: 0.7rem;">Program</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container main-container" style="margin-top: 80px; padding-bottom: 50px;">
+
+    <div class="row g-4 justify-content-center">
+
+        <div class="col-sm-6 col-lg-3">
+            <a href="request.htm" class="menu-card p-4 bg-white rounded-4 shadow-sm d-block text-decoration-none text-dark h-100 border transition-hover">
+                <div class="card-icon-bg mb-3 text-primary" style="font-size: 2rem;"><i class="fas fa-file-circle-plus"></i></div>
+                <h5 class="menu-title fw-bold">Request Documents</h5>
+                <p class="menu-desc text-muted small">Apply for TOR, Diploma, and Certifications online.</p>
+            </a>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+            <a href="track.htm" class="menu-card p-4 bg-white rounded-4 shadow-sm d-block text-decoration-none text-dark h-100 border transition-hover">
+                <div class="card-icon-bg mb-3 text-success" style="font-size: 2rem;"><i class="fas fa-search-location"></i></div>
+                <h5 class="menu-title fw-bold">Track Status</h5>
+                <p class="menu-desc text-muted small">Check appointment schedule and request progress.</p>
+            </a>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+            <a href="settings.htm" class="menu-card p-4 bg-white rounded-4 shadow-sm d-block text-decoration-none text-dark h-100 border transition-hover">
+                <div class="card-icon-bg mb-3 text-warning" style="font-size: 2rem;"><i class="fas fa-user-cog"></i></div>
+                <h5 class="menu-title fw-bold">Profile Settings</h5>
+                <p class="menu-desc text-muted small">Update your contact info (Email & Phone).</p>
+            </a>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+            <a href="faq.htm" class="menu-card p-4 bg-white rounded-4 shadow-sm d-block text-decoration-none text-dark h-100 border transition-hover">
+                <div class="card-icon-bg mb-3 text-info" style="font-size: 2rem;"><i class="fas fa-circle-question"></i></div>
+                <h5 class="menu-title fw-bold">Help & FAQs</h5>
+                <p class="menu-desc text-muted small">Find answers to frequently asked questions.</p>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="map-container-card text-center">
+        <h5 class="fw-bold text-primary mb-3 text-start ps-2"><i class="fas fa-map-marker-alt me-2"></i> Campus Location</h5>
+        <iframe class="map-frame"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3908.775274883754!2d124.63508337584886!3d12.500927987787667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3308f51707d82f1b%3A0x2c2d6f86e2987b0!2sNorthern%20Samar%20Colleges!5e0!3m2!1sen!2sph!4v1710000000000!5m2!1sen!2sph"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <a href="https://www.google.com/maps/dir//Northern+Samar+Colleges,+Catarman,+Northern+Samar" target="_blank" class="btn-directions">
+            <i class="fas fa-location-arrow me-2"></i> Get Directions
+        </a>
+    </div>
+
+</div>
+
+<footer style="background: white; padding: 20px 0; text-align: center; margin-top: 30px; border-top: 1px solid #eee;">
+    <div class="container text-muted small">© 2025 Northern Samar Colleges. All Rights Reserved.</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        const studentId = localStorage.getItem('nsc_student_id');
+
+        if (studentId) {
+            $.ajax({
+                url: '/api/registrar/student/' + studentId,
+                type: 'GET',
+                success: function(res) {
+                    if (res.status === 'success') {
+                        const s = res.student;
+                        $('#dynamic-name').text(s.firstname + ' ' + s.lastname);
+                        $('#dynamic-id').text(s.studentId);
+                        $('#dynamic-program').text(s.program);
+                        if (s.profilePic) { $('#nav-profile-pic').attr('src', s.profilePic); }
+                    }
+                }
+            });
+
+            // Update Links
+            $('a[href="request.htm"]').attr('href', 'request.htm?id=' + studentId);
+            $('a[href="track.htm"]').attr('href', 'track.htm?id=' + studentId);
+            $('a[href="settings.htm"]').attr('href', 'settings.htm?id=' + studentId);
+            $('a[href="faq.htm"]').attr('href', 'faq.htm?id=' + studentId); // NEW Link
+
+        } else {
+            window.location.href = '/login_student.htm';
+        }
+    });
+</script>
+</body>
+</html>

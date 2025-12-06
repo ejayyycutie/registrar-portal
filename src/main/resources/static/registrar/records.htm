@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Records - NSC Registrar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <style>
+        :root { --primary: #0f204b; --gold: #fbbf24; --sidebar-width: 280px; --bg-light: #f3f6f9; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); overflow-x: hidden; }
+
+        /* UNIFIED SIDEBAR */
+        .sidebar { width: var(--sidebar-width); height: 100vh; position: fixed; top: 0; left: 0; background: linear-gradient(180deg, #0f204b 0%, #030b18 100%); padding: 30px 20px; color: white; z-index: 1000; display: flex; flex-direction: column; }
+        .brand-box { display: flex; align-items: center; gap: 15px; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px; }
+        .brand-logo { width: 50px; height: 50px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
+        .brand-text h5 { font-weight: 700; font-size: 1.1rem; line-height: 1.2; color: var(--gold); margin: 0; }
+        .brand-text span { font-size: 0.75rem; opacity: 0.7; font-weight: 400; }
+
+        .nav-menu { flex-grow: 1; }
+        .nav-item { display: flex; align-items: center; gap: 15px; padding: 15px 20px; color: rgba(255,255,255,0.7); text-decoration: none; border-radius: 12px; margin-bottom: 8px; transition: 0.3s; font-weight: 500; }
+        .nav-item:hover, .nav-item.active { background: rgba(251, 191, 36, 0.15); color: var(--gold); }
+        .nav-item i { width: 25px; font-size: 1.2rem; text-align: center; }
+
+        .logout-box { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .logout-link { color: #ef4444; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 10px; padding: 10px 20px; transition: 0.3s; }
+        .logout-link:hover { color: #ff6b6b; background: rgba(239, 68, 68, 0.1); border-radius: 12px; }
+
+        .main-content { margin-left: var(--sidebar-width); padding: 40px; }
+        .page-title { font-weight: 700; color: var(--primary); margin-bottom: 0; }
+        .page-subtitle { color: #64748b; margin-bottom: 0; font-size: 0.95rem; }
+
+        .glass-card { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.03); }
+        .table th { font-size: 0.75rem; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px; border-bottom: 2px solid #f1f5f9; }
+        .table td { vertical-align: middle; padding: 15px; font-size: 0.95rem; color: #334155; }
+
+        .btn-add { background: linear-gradient(90deg, #0f204b, #3b82f6); color: white; border: none; padding: 10px 25px; border-radius: 50px; font-weight: 600; box-shadow: 0 5px 15px rgba(15, 32, 75, 0.2); transition: 0.3s; }
+        .btn-add:hover { transform: translateY(-2px); }
+        .search-input { border-radius: 50px; padding: 10px 20px; border: 1px solid #e2e8f0; width: 300px; outline: none; }
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <div class="brand-box">
+        <img src="/assets/img/logo.png" class="brand-logo" onerror="this.src='https://via.placeholder.com/50?text=LOGO'">
+        <div class="brand-text"><h5>NSC REGISTRAR</h5><span>System Panel</span></div>
+    </div>
+    <nav class="nav-menu">
+        <a href="dashboard.htm" class="nav-item"><i class="fas fa-th-large"></i> Dashboard</a>
+        <a href="verification.htm" class="nav-item"><i class="fas fa-file-signature"></i> Verification</a>
+        <a href="appointments.htm" class="nav-item"><i class="fas fa-calendar-alt"></i> Appointments</a>
+        <a href="records.htm" class="nav-item active"><i class="fas fa-users"></i> Student Records</a>
+        <a href="settings.htm" class="nav-item"><i class="fas fa-cog"></i> Settings</a>
+    </nav>
+    <div class="logout-box">
+        <a href="../login_registrar.htm" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div><h2 class="page-title">Student Database</h2><p class="page-subtitle">Manage enrollment records.</p></div>
+        <div class="d-flex gap-3">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search student...">
+            <button class="btn-add" data-bs-toggle="modal" data-bs-target="#addStudentModal"><i class="fas fa-plus me-2"></i> Add Student</button>
+        </div>
+    </div>
+    <div class="glass-card">
+        <table class="table align-middle">
+            <thead class="table-light"><tr><th>ID Number</th><th>Full Name</th><th>Program & Year</th><th>Status</th><th class="text-end">View</th></tr></thead>
+            <tbody id="studentTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="addStudentModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 p-4" style="border-radius: 20px;">
+            <div class="modal-header border-0 pb-0">
+                <div>
+                    <h5 class="modal-title fw-bold text-primary"><i class="fas fa-user-plus me-2"></i>New Student Entry</h5>
+                    <p class="text-muted small m-0">This creates an account for the student.</p>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body pt-4">
+                <form id="addStudentForm" enctype="multipart/form-data">
+
+                    <div class="mb-4">
+                        <label class="fw-bold small text-muted">Student Picture</label>
+                        <input type="file" name="imageFile" class="form-control" accept="image/*">
+                    </div>
+
+                    <h6 class="text-uppercase fw-bold text-warning small mb-3">Academic Information</h6>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6"><label class="fw-bold small">Student ID <span class="text-danger">*</span></label><input type="text" name="sid" class="form-control" placeholder="e.g. 233657" required></div>
+                        <div class="col-md-6"><label class="fw-bold small">Program <span class="text-danger">*</span></label><input type="text" name="prog" class="form-control" placeholder="e.g. BS InfoTech" required></div>
+                        <div class="col-md-6"><label class="fw-bold small">Year Level</label><select name="year" class="form-select"><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option><option>Graduated</option></select></div>
+                        <div class="col-md-6"><label class="fw-bold small">Status</label><select name="status" class="form-select"><option value="Active">Active Student</option><option value="Graduate">Alumni / Graduate</option></select></div>
+                    </div>
+
+                    <h6 class="text-uppercase fw-bold text-warning small mb-3">Personal Details</h6>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6"><label class="fw-bold small">First Name <span class="text-danger">*</span></label><input type="text" name="fname" class="form-control" required></div>
+                        <div class="col-md-6"><label class="fw-bold small">Last Name <span class="text-danger">*</span></label><input type="text" name="lname" class="form-control" required></div>
+                        <div class="col-md-12"><label class="fw-bold small">Birthdate (This will be the Password) <span class="text-danger">*</span></label><input type="date" name="bday" class="form-control" required></div>
+                        <div class="col-md-6"><label class="fw-bold small">Email</label><input type="email" name="email" class="form-control" placeholder="Optional"></div>
+                        <div class="col-md-6"><label class="fw-bold small">Phone</label><input type="text" name="phone" class="form-control" placeholder="Optional"></div>
+                    </div>
+
+                    <div class="text-end">
+                        <button type="button" class="btn btn-light rounded-pill px-4 me-2" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary rounded-pill px-5 fw-bold">Save Record</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){ loadStudents(); });
+
+    function loadStudents() {
+        $.ajax({ url: '/api/registrar/students', type: 'GET', success: function(data) {
+            var rows = "";
+            if(data.length === 0) rows = '<tr><td colspan="5" class="text-center py-4">No records.</td></tr>';
+            else $.each(data, function(i, s){
+                var badge = s.status==='Active'?'bg-success':'bg-warning text-dark';
+                rows += `<tr><td><span class="badge bg-light text-dark border">${s.studentId}</span></td><td><div class="fw-bold">${s.lastname}, ${s.firstname}</div></td><td><div class="small fw-bold">${s.program}</div><div class="small text-muted">${s.yearLevel}</div></td><td><span class="badge ${badge} rounded-pill">${s.status}</span></td><td class="text-end"><a href="view_student.htm?id=${s.studentId}" class="btn btn-light rounded-circle"><i class="fas fa-eye text-primary"></i></a></td></tr>`;
+            });
+            $('#studentTableBody').html(rows);
+        }});
+    }
+
+    // SUBMIT WITH IMAGE SUPPORT
+    $('#addStudentForm').submit(function(e){
+        e.preventDefault();
+        var btn = $(this).find('button[type="submit"]');
+        btn.html('Saving...').prop('disabled', true);
+
+        $.ajax({ url: '/api/registrar/student/add', type: 'POST', data: new FormData(this), processData:false, contentType:false, dataType:'json',
+            success: function(res){
+                if(res.status==='success'){ alert(res.message); location.reload(); }
+                else { alert(res.message); btn.html('Save Record').prop('disabled', false); }
+            },
+            error: function() { alert("System Error."); btn.html('Save Record').prop('disabled', false); }
+        });
+    });
+
+    // SEARCH
+    $('#searchInput').on('keyup', function() {
+        var value = $(this).val().toLowerCase();
+        $("#studentTableBody tr").filter(function() { $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1) });
+    });
+</script>
+</body>
+</html>

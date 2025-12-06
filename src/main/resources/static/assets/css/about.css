@@ -1,0 +1,192 @@
+/* ============================================================ */
+/* DESKTOP VIEW (ORIGINAL - WALANG GINALAW)                     */
+/* ============================================================ */
+
+:root { --primary-blue: #0f204b; --accent-blue: #2a5bd7; --accent-gold: #fbbf24; --bg-light: #f8faff; --text-dark: #1e293b; }
+body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); overflow-x: hidden; }
+
+/* Navbar Default (Desktop) */
+.navbar { background: rgba(15, 32, 75, 0.95); padding: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+.navbar-brand img { height: 70px; width: 70px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); margin-right: 15px; object-fit: cover; }
+.brand-text { font-size: 1.6rem; font-weight: 700; color: white; line-height: 1; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.5px; }
+.nav-link { color: rgba(255,255,255,0.8) !important; font-weight: 500; font-size: 1rem; margin-left: 25px; transition: 0.3s; }
+.nav-link:hover, .nav-link.active { color: var(--accent-gold) !important; font-weight: 700; }
+
+/* Page Hero Default */
+.page-hero { background: linear-gradient(135deg, #030b18 0%, #0f204b 100%); padding: 100px 0 80px 0; text-align: center; color: white; position: relative; overflow: hidden; }
+.hero-circle { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.03); z-index: 0; }
+.c1 { width: 300px; height: 300px; top: -50px; left: -50px; }
+.c2 { width: 500px; height: 500px; bottom: -100px; right: -100px; }
+.hero-title { font-weight: 800; font-size: 3.5rem; text-transform: uppercase; letter-spacing: 2px; position: relative; z-index: 1; }
+.hero-subtitle { color: var(--accent-gold); font-size: 1.2rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; margin-top: 10px; position: relative; z-index: 1; }
+
+/* Content Sections Default */
+.intro-section { padding: 80px 0; position: relative; }
+.intro-box { background: white; border-radius: 20px; padding: 50px; box-shadow: 0 15px 40px rgba(0,0,0,0.05); text-align: center; position: relative; margin-top: -60px; z-index: 10; }
+.intro-logo { width: 120px; height: 120px; border-radius: 50%; object-fit: contain; background: white; padding: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 30px; }
+.intro-text { font-size: 1.15rem; line-height: 1.9; color: #555; font-weight: 300; }
+.intro-highlight { font-weight: 600; color: var(--primary-blue); }
+
+.vision-section { background-color: var(--primary-blue); color: white; padding: 80px 0; position: relative; text-align: center; border-radius: 30px; margin: 40px 0; overflow: hidden; }
+.vision-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.5; }
+.vision-title { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 20px; position: relative; z-index: 2; }
+.vision-quote { font-size: 1.8rem; font-weight: 700; font-style: italic; line-height: 1.5; max-width: 900px; margin: 0 auto; position: relative; z-index: 2; }
+.vision-quote i { color: rgba(251, 191, 36, 0.3); font-size: 3rem; vertical-align: top; margin: 0 10px; }
+
+.section-heading { font-size: 2.2rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 40px; text-align: center; text-transform: uppercase; }
+.section-heading span { border-bottom: 5px solid var(--accent-gold); }
+
+.mission-list { counter-reset: mission-counter; padding: 0; }
+.mission-item { list-style: none; background: white; padding: 25px 30px 25px 70px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); position: relative; transition: transform 0.3s; font-size: 1rem; color: #444; line-height: 1.6; }
+.mission-item:hover { transform: translateX(10px); border-left: 5px solid var(--accent-gold); }
+.mission-item::before { counter-increment: mission-counter; content: counter(mission-counter); position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: var(--primary-blue); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem; }
+
+.obj-card { background: white; padding: 30px; border-radius: 15px; height: 100%; border-top: 5px solid var(--accent-blue); box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s; }
+.obj-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+.obj-icon { font-size: 2.5rem; color: var(--accent-blue); margin-bottom: 20px; opacity: 0.2; }
+
+footer { background-color: #030511; color: white; padding-top: 70px; margin-top: 80px; }
+.footer-logo { height: 90px; width: 90px; border-radius: 50%; object-fit: cover; border: 2px solid transparent; }
+.footer-logo-text { font-family: 'Impact', sans-serif; font-size: 2rem; line-height: 1; text-transform: uppercase; margin-left: 15px; }
+.copyright-bar { background-color: #1a1f36; padding: 20px 0; margin-top: 50px; text-align: center; font-size: 0.9rem; color: #aaa; }
+
+@media only screen and (max-width: 991px) {
+    /* Global Reset */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+
+   /* ============================================================ */
+   /* MOBILE VIEW ONLY (EXACT COPY NG ABOUT PAGE)                  */
+   /* ============================================================ */
+
+   @media only screen and (max-width: 991px) {
+       /* Global Reset */
+       html, body {
+           overflow-x: hidden !important;
+           width: 100% !important;
+       }
+
+       /* 1. NAVBAR FIX - LEFT LOGO, RIGHT MENU */
+       .navbar .container-fluid {
+           display: flex !important;
+           justify-content: space-between !important;
+           align-items: center !important;
+
+           padding-left: 20px !important;
+           padding-right: 20px !important;
+       }
+
+       .navbar {
+           padding: 10px 0 !important;
+       }
+
+       /* Logo stays Left */
+       .navbar-brand {
+           margin-right: auto !important;
+           display: flex !important;
+           align-items: center !important;
+           gap: 10px !important;
+       }
+
+       .navbar-brand img {
+           height: 50px !important;
+           width: 50px !important;
+           margin-right: 0 !important;
+       }
+
+       .brand-text {
+           font-size: 1rem !important;
+           white-space: normal !important;
+           line-height: 1.1 !important;
+           text-align: left !important;
+       }
+
+       /* Menu Button stays Right */
+       .navbar-toggler {
+           margin-left: auto !important;
+           border: none !important;
+           box-shadow: none !important;
+           outline: none !important;
+           padding: 0 !important;
+       }
+
+       /* 2. HERO BACKGROUND */
+       .hero-section {
+           height: 100vh !important;
+           width: 100% !important;
+           padding: 0 !important;
+           display: flex !important;
+           align-items: center !important;
+           justify-content: center !important;
+           background-position: center top !important;
+           background-size: cover !important;
+           background-attachment: scroll !important;
+       }
+
+       /* 3. CONTENT - SPACE SA GILID */
+       .hero-content {
+           width: 100% !important;
+           margin: 0 !important;
+           text-align: center !important;
+           box-sizing: border-box !important;
+           padding-left: 30px !important;
+           padding-right: 30px !important;
+       }
+
+       /* 4. TEXT SIZING - MATCH SA ABOUT PAGE */
+       .hero-welcome {
+           font-size: 0.9rem !important;
+           letter-spacing: 3px !important;
+           margin-bottom: 15px !important;
+       }
+
+       .hero-title {
+           font-size: 11vw !important;
+           line-height: 1.1 !important;
+           margin-bottom: 20px !important;
+           text-shadow: 2px 2px 8px rgba(0,0,0,0.8) !important;
+       }
+
+       .hero-subtitle {
+           font-size: 1rem !important;
+           color: #ddd !important;
+           margin-bottom: 35px !important;
+           font-weight: 400 !important;
+           padding: 0 10px !important;
+       }
+
+       .hero-desc { display: none !important; }
+
+       /* 5. BUTTONS */
+       .hero-content .d-flex {
+           flex-direction: column !important;
+           gap: 15px !important;
+           width: 100% !important;
+       }
+
+       .btn-portal {
+           width: 100% !important;
+           padding: 16px 0 !important;
+           font-size: 1rem !important;
+           border-radius: 50px !important;
+       }
+
+       /* 6. SERVICES & FOOTER */
+       .services-section {
+           padding: 60px 20px !important;
+       }
+
+       footer {
+           text-align: center !important;
+       }
+       .d-flex.align-items-center {
+           justify-content: center !important;
+           flex-direction: column !important;
+       }
+       .footer-logo-text {
+           margin-left: 0 !important;
+           margin-top: 10px !important;
+       }
+   }
