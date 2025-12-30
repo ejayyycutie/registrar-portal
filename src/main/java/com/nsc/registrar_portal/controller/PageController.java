@@ -6,24 +6,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PageController {
 
-    // ITO ANG PAGBABAGO:
-    // Kapag binuksan ang "nscregistrar.com" o root url, "home.html" ang lalabas.
+    // 1. Homepage Mapping
     @GetMapping("/")
-    public String showLandingPage() {
-        return "home"; // Dapat match sa filename na home.html sa templates folder
+    public String showHome() {
+        // Dahil nasa loob siya ng "homepage" folder sa static:
+        return "homepage/home";
     }
 
-    // Mapping para sa Login (Kung click nila yung Student Portal button)
+    // 2. Login Mapping
     @GetMapping("/login")
-    public String showLoginPage() {
-        return "login"; // Dapat may login.html ka
+    public String showLogin() {
+        // Hanapin mo kung saang folder nakalagay ang login.htm mo.
+        // Kung nasa homepage folder din siya:
+        return "homepage/login";
+        // Kung nasa labas siya (direct sa static): return "login";
     }
 
-    // Mapping para sa Registrar Login
-    @GetMapping("/registrar-login")
-    public String showRegistrarLoginPage() {
-        return "registrar_login"; // Palitan kung anong filename ng registrar login mo
+    // 3. Registrar Dashboard
+    @GetMapping("/registrar/dashboard")
+    public String showRegistrarDashboard() {
+        // Base sa screenshot mo, nasa "registrar" folder ito:
+        return "registrar/dashboard";
     }
-
-    // ... iba pang mappings (dashboard, etc.)
 }
