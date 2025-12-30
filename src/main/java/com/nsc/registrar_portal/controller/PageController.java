@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PageController {
 
-    // --- HOMEPAGE ---
+    // --- HOMEPAGE (Ito tama na to) ---
     @GetMapping("/")
     public String showHome() {
         return "homepage/home";
@@ -27,25 +27,27 @@ public class PageController {
         return "homepage/contact";
     }
 
-    // --- LOGINS (ITO ANG NAG-EERROR SA'YO) ---
+    // --- LOGINS (ITO ANG FINAL FIX) ---
+    // Base sa screenshot mo: "login_student.htm" at "login_registrar.htm"
 
-    @GetMapping("/login") // Student Login
+    @GetMapping("/login")
     public String showStudentLogin() {
-        // Hula ko nasa loob ito ng "student" folder
-        return "student/login";
+        return "login_student"; // Ito ang pangalan ng file mo sa screenshot
     }
 
-    @GetMapping("/registrar-login") // Registrar Login
+    @GetMapping("/registrar-login")
     public String showRegistrarLogin() {
-        // Hula ko nasa loob ito ng "registrar" folder, pero wala sa screenshot mo kanina
-        // Kung "dashboard.htm" lang ang nandun, baka nasa ibang folder ang login mo?
-        // Pansamantala, try natin ito:
-        return "registrar/login";
+        return "login_registrar"; // Ito ang pangalan ng file mo sa screenshot
     }
 
     // --- DASHBOARDS ---
     @GetMapping("/registrar/dashboard")
     public String showRegistrarDashboard() {
         return "registrar/dashboard";
+    }
+
+    @GetMapping("/student/dashboard")
+    public String showStudentDashboard() {
+        return "student/dashboard";
     }
 }
