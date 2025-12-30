@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/registrar_login.css">
+    <link rel="stylesheet" href="/assets/css/registrar_login.css">
 
 </head>
 <body class="login-body">
@@ -19,7 +19,7 @@
         <div class="hero-blob hb-2"></div>
 
         <div class="welcome-text position-relative z-2">
-            <img src="assets/img/logo.png" style="width: 120px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.2); margin-bottom: 30px; box-shadow: 0 0 30px rgba(251, 191, 36, 0.4);" onerror="this.src='https://via.placeholder.com/120?text=LOGO'">
+            <img src="/assets/img/logo.png" style="width: 120px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.2); margin-bottom: 30px; box-shadow: 0 0 30px rgba(251, 191, 36, 0.4);" onerror="this.src='https://via.placeholder.com/120?text=LOGO'">
             <h1 style="font-weight: 800; font-size: 3.5rem; line-height: 1.2;">REGISTRAR</h1>
             <h3 style="color: #fbbf24; font-weight: 600; letter-spacing: 2px;">MANAGEMENT PORTAL</h3>
             <p style="margin-top: 20px; font-weight: 300; opacity: 0.8; max-width: 400px;">
@@ -29,7 +29,7 @@
     </div>
 
     <div class="col-lg-6 right-panel">
-        <a href="homepage/home.htm" style="position: absolute; top: 30px; left: 30px; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.9rem;">
+        <a href="/" style="position: absolute; top: 30px; left: 30px; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.9rem;">
             <i class="fas fa-arrow-left me-2"></i> Back to Website
         </a>
 
@@ -85,7 +85,8 @@
                 dataType: 'json',
                 success: function(res){
                     if(res.status == 'success'){
-                        window.location.href = 'registrar/dashboard.htm';
+                        // FIXED REDIRECT: Papunta sa dashboard route
+                        window.location.href = '/registrar/dashboard';
                     } else {
                         $('#errorMsg').text(res.message).removeClass('d-none');
                         $('#loginBtn').html('Access Dashboard <i class="fas fa-arrow-right ms-2"></i>').prop('disabled', false);
