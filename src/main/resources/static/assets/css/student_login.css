@@ -1,0 +1,16 @@
+ /* Specific Styles to Match Aesthetic */
+        .login-body { background-color: #050a14; color: white; height: 100vh; overflow: hidden; }
+        .left-panel { background: linear-gradient(135deg, #030b18 0%, #0f204b 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 50px; text-align: center; height: 100vh; }
+        .right-panel { background: #0b1120; display: flex; align-items: center; justify-content: center; position: relative; height: 100vh; }
+        .login-box { width: 100%; max-width: 400px; padding: 40px; z-index: 2; }
+        .hero-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; animation: float 8s infinite ease-in-out; }
+        .hb-1 { width: 300px; height: 300px; background: rgba(42, 91, 215, 0.4); top: -50px; left: -50px; }
+        .hb-2 { width: 400px; height: 400px; background: rgba(251, 191, 36, 0.15); bottom: -100px; right: -100px; animation-delay: 1s; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+        .form-control-dark { background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 50px; padding: 15px 20px 15px 50px; color: white; transition: 0.3s; }
+        .form-control-dark:focus { border-color: var(--accent-gold); outline: none; background: rgba(255,255,255,0.1); color: white; }
+        .input-wrapper { position: relative; }
+        .input-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #94a3b8; }
+        .btn-login { background: linear-gradient(90deg, #3b82f6, #0f204b); border: none; border-radius: 50px; width: 100%; padding: 15px; font-weight: 700; text-transform: uppercase; margin-top: 10px; color: white; transition: 0.3s; }
+        .btn-login:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4); }

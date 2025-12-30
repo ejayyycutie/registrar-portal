@@ -1,0 +1,104 @@
+
+        /* ASTIG UI TWEAKS FOR FAQ */
+        .faq-card {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        /* Hover Effect (Umaangat) - Desktop View */
+        .faq-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(15, 32, 75, 0.1);
+            border-left: 5px solid #fbbf24; /* Gold Accent */
+        }
+
+        /* Accordion Header Styles */
+        .accordion-button {
+            font-weight: 600;
+            color: #0f204b;
+            background-color: white;
+            box-shadow: none !important;
+            padding: 20px;
+            border-radius: 15px !important;
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: #0f204b;
+            background-color: #fffbeb; /* Light Gold BG */
+            border-bottom: 1px solid #eee;
+            border-bottom-left-radius: 0 !important;
+            border-bottom-right-radius: 0 !important;
+        }
+
+        .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230f204b'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+
+        /* Answer Body */
+        .accordion-body {
+            color: #64748b;
+            line-height: 1.6;
+            padding: 20px;
+            font-size: 0.95rem;
+        }
+
+        /* --- MOBILE VIEW SPECIFIC STYLES (Max-width 767.98px for sm/md breakpoints) --- */
+        @media (max-width: 767.98px) {
+            /* Navbar adjustments for smaller screens */
+            .navbar .container {
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+            }
+            .navbar-brand img {
+                height: 35px !important; /* Slightly smaller logo */
+            }
+            .navbar .brand-text {
+                font-size: 0.9rem; /* Smaller Help Center text */
+            }
+            .navbar .profile-btn {
+                font-size: 0.8rem; /* Smaller Dashboard link */
+            }
+
+            /* Dashboard Hero Section adjustments */
+            .dashboard-hero {
+                padding: 40px 0 100px 0 !important; /* Reduced vertical padding */
+                margin-bottom: -50px !important;
+            }
+            .dashboard-hero h1 {
+                font-size: 2rem !important; /* Smaller main heading */
+            }
+            .dashboard-hero p {
+                font-size: 0.9rem !important; /* Smaller subheading */
+            }
+
+            /* Main Content Container padding */
+            .container {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+
+            /* FAQ Card Readability Enhancements */
+            .accordion-button {
+                padding: 15px !important; /* Reduced padding */
+                font-size: 0.95rem; /* Ensure good size for the question text */
+            }
+
+            .accordion-body {
+                padding: 15px !important; /* Reduced padding */
+                font-size: 1rem !important; /* **Made answer text slightly bigger for better readability** */
+                line-height: 1.5; /* Good line height */
+            }
+
+            /* Remove hover effect on touch devices */
+             .faq-card:hover {
+                transform: none;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+                border-left: none;
+            }
+
+        }

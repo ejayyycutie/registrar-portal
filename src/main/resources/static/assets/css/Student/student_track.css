@@ -1,0 +1,178 @@
+
+        :root { --primary: #0f204b; --gold: #fbbf24; --blue: #3b82f6; --bg: #f0f4f8; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: #334155; overflow-x: hidden; }
+
+        /* Navbar Fixes (Desktop/Base) */
+        .navbar { background: var(--primary) !important; padding: 12px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+        .brand-text { color: white; font-weight: 700; letter-spacing: 1px; font-size: 1.1rem; text-transform: uppercase; }
+        .profile-btn { text-decoration: none; color: rgba(255,255,255,0.8) !important; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .profile-btn:hover { color: var(--gold) !important; }
+
+        /* Hero Section (Desktop/Base) */
+        .dashboard-hero {
+            background: linear-gradient(135deg, #030b18 0%, #0f204b 100%);
+            padding: 80px 0 120px 0;
+            text-align: center; color: white; margin-bottom: -60px;
+            border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
+            position: relative; overflow: hidden;
+        }
+        .welcome-title { font-weight: 800; font-size: 2.5rem; line-height: 1.2; margin-bottom: 10px; }
+        .welcome-sub { font-size: 0.9rem; opacity: 0.8; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* Track Card */
+        .track-card {
+            background: white; border-radius: 25px; padding: 40px;
+            box-shadow: 0 20px 50px rgba(15, 32, 75, 0.1);
+            min-height: 400px; position: relative; z-index: 10; border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        /* Timeline Styles */
+        .timeline-wrapper { position: relative; padding-left: 20px; margin-top: 30px; }
+        .timeline-wrapper::before { content: ''; position: absolute; left: 29px; top: 10px; bottom: 50px; width: 3px; background: #e2e8f0; z-index: 0; }
+        .timeline-item { position: relative; margin-bottom: 40px; padding-left: 70px; }
+        .timeline-icon {
+            position: absolute; left: 0; top: 0; width: 60px; height: 60px; border-radius: 50%;
+            background: white; border: 4px solid #f1f5f9; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; color: #cbd5e1; z-index: 1; transition: 0.3s;
+        }
+
+        /* Status Colors */
+        .t-active .timeline-icon { border-color: var(--blue); color: var(--blue); box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.1); animation: pulse 2s infinite; }
+        .t-done .timeline-icon { background: #10b981; border-color: #10b981; color: white; }
+        .t-fail .timeline-icon { background: #ef4444; border-color: #ef4444; color: white; }
+
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); } 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); } }
+
+        .timeline-content h5 { font-weight: 700; margin-bottom: 5px; font-size: 1.1rem; }
+        .timeline-content p { font-size: 0.9rem; color: #64748b; margin: 0; }
+        .timeline-date { font-size: 0.8rem; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; display: block; }
+
+        /* Appointment Ticket */
+        .appointment-ticket {
+            background: linear-gradient(135deg, #fffbeb 0%, #fff7ed 100%);
+            border-left: 5px solid var(--gold);
+            padding: 20px; border-radius: 10px; margin-top: 15px; display: flex; align-items: center; gap: 20px;
+        }
+        .at-date { font-weight: 800; font-size: 1.5rem; color: var(--primary); line-height: 1; text-align: center; border-right: 1px solid rgba(0,0,0,0.1); padding-right: 20px; }
+        .at-time { font-size: 0.9rem; color: #d97706; font-weight: 600; text-transform: uppercase; }
+        .at-label { font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Floating Search */
+        .floating-search {
+            max-width: 600px; margin: -30px auto 40px auto; background: white; padding: 8px; border-radius: 50px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1); display: flex; position: relative; z-index: 20;
+        }
+        .search-field { border: none; flex: 1; padding: 10px 25px; border-radius: 50px; outline: none; font-size: 1rem; }
+        .search-btn { background: var(--gold); color: var(--primary); border: none; padding: 10px 40px; border-radius: 50px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .search-btn:hover { background: #f59e0b; }
+
+        /* Mobile View Adjustments (Targeting ONLY Navbar and Hero Section for consistency) */
+        @media (max-width: 767px) {
+            body { overflow-x: hidden; }
+
+            /* --- NAVBAR ADJUSTMENTS --- */
+            .navbar .container {
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+            }
+            .navbar-brand img {
+                height: 35px !important; /* Smaller logo */
+            }
+            .brand-text {
+                font-size: 0.9rem !important; /* Smaller brand text */
+            }
+            .profile-btn {
+                font-size: 0.8rem !important; /* Smaller Dashboard button text */
+            }
+            /* --- END NAVBAR ADJUSTMENTS --- */
+
+            /* --- HERO SECTION ADJUSTMENTS --- */
+            .dashboard-hero {
+                padding: 40px 0 80px 0 !important;
+                margin-bottom: -40px !important;
+                border-bottom-left-radius: 30px;
+                border-bottom-right-radius: 30px;
+            }
+            .welcome-title {
+                font-size: 2rem !important;
+            }
+            .welcome-sub {
+                font-size: 0.8rem !important;
+            }
+            /* --- END HERO SECTION ADJUSTMENTS --- */
+
+            /* Keeping the rest of the existing mobile styles (search, cards, timeline) */
+            .container { padding-left: 15px; padding-right: 15px; }
+            .floating-search {
+                max-width: 100%;
+                margin: -20px 10px 30px 10px;
+                padding: 2px;
+                border-radius: 20px;
+                gap: 5px;
+            }
+            .search-field {
+                padding: 2px 5px;
+                font-size: 0.7rem;
+            }
+            .search-btn {
+                padding: 2px 8px;
+                font-size: 0.7rem;
+                background: var(--gold) !important;
+                border: none !important;
+            }
+            .track-card {
+                padding: 15px;
+                border-radius: 15px;
+                margin: 0 -10px;
+            }
+            .timeline-wrapper {
+                padding-left: 10px;
+                margin-top: 20px;
+            }
+            .timeline-wrapper::before {
+                left: 19px;
+                width: 2px;
+            }
+            .timeline-item {
+                padding-left: 45px;
+                margin-bottom: 25px;
+            }
+            .timeline-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+            .timeline-content h5 {
+                font-size: 0.95rem;
+            }
+            .timeline-content p {
+                font-size: 0.8rem;
+            }
+            .appointment-ticket {
+                flex-direction: column;
+                gap: 10px;
+                padding: 12px;
+                margin-top: 10px;
+            }
+            .at-date {
+                font-size: 1.2rem;
+                border-right: none;
+                padding-right: 0;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+                padding-bottom: 8px;
+                margin-bottom: 8px;
+            }
+            .at-time, .at-label {
+                font-size: 0.75rem;
+                text-align: center;
+            }
+            .d-flex.justify-content-between.align-items-end.mb-3 {
+                flex-direction: column;
+                align-items: flex-start !important;
+                gap: 10px;
+            }
+            .text-end {
+                text-align: left !important;
+            }
+
+        }

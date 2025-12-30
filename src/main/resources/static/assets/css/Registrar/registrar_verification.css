@@ -1,0 +1,31 @@
+
+        :root { --primary: #0f204b; --gold: #fbbf24; --sidebar-width: 280px; --bg-light: #f3f6f9; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); overflow-x: hidden; }
+
+        .sidebar { width: var(--sidebar-width); height: 100vh; position: fixed; top: 0; left: 0; background: linear-gradient(180deg, #0f204b 0%, #030b18 100%); padding: 30px 20px; color: white; z-index: 1000; display: flex; flex-direction: column; }
+        .brand-box { display: flex; align-items: center; gap: 15px; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px; }
+        .brand-logo { width: 50px; height: 50px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
+        .brand-text h5 { font-weight: 700; font-size: 1.1rem; line-height: 1.2; color: var(--gold); margin: 0; }
+        .brand-text span { font-size: 0.75rem; opacity: 0.7; font-weight: 400; }
+
+        .nav-menu { flex-grow: 1; }
+        .nav-item { display: flex; align-items: center; gap: 15px; padding: 15px 20px; color: rgba(255,255,255,0.7); text-decoration: none; border-radius: 12px; margin-bottom: 8px; transition: 0.3s; font-weight: 500; }
+        .nav-item:hover, .nav-item.active { background: rgba(251, 191, 36, 0.15); color: var(--gold); }
+        .nav-item i { width: 25px; font-size: 1.2rem; text-align: center; }
+
+        .logout-box { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .logout-link { color: #ef4444; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 10px; padding: 10px 20px; transition: 0.3s; }
+        .logout-link:hover { color: #ff6b6b; background: rgba(239, 68, 68, 0.1); border-radius: 12px; }
+
+        .main-content { margin-left: var(--sidebar-width); padding: 40px; }
+        .page-title { font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+        .page-subtitle { color: #64748b; margin-bottom: 40px; font-size: 0.95rem; }
+
+        .glass-card { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.03); }
+        .table th { font-size: 0.75rem; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px; border-bottom: 2px solid #f1f5f9; }
+        .table td { vertical-align: middle; padding: 15px; font-size: 0.95rem; color: #334155; }
+
+        .btn-check-action { width: 40px; height: 40px; border-radius: 50%; border: none; background: #ecfdf5; color: #059669; transition: 0.3s; }
+        .btn-check-action:hover { background: #059669; color: white; transform: scale(1.1); }
+        .btn-reject-action { width: 40px; height: 40px; border-radius: 50%; border: none; background: #fef2f2; color: #ef4444; transition: 0.3s; }
+        .btn-reject-action:hover { background: #ef4444; color: white; transform: scale(1.1); }
