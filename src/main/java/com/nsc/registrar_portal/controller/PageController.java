@@ -3,30 +3,27 @@ package com.nsc.registrar_portal.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller  // <--- Importante: @Controller lang ito, HINDI @RestController
+@Controller
 public class PageController {
 
-    // 1. Kapag binuksan ang website (Root URL), ipakita ang Login Page
+    // ITO ANG PAGBABAGO:
+    // Kapag binuksan ang "nscregistrar.com" o root url, "home.html" ang lalabas.
     @GetMapping("/")
     public String showLandingPage() {
-        return "login"; // Dapat may file kang 'login.html' (small letters) sa templates folder
+        return "home"; // Dapat match sa filename na home.html sa templates folder
     }
 
-    // 2. Mapping para sa /login link
+    // Mapping para sa Login (Kung click nila yung Student Portal button)
     @GetMapping("/login")
     public String showLoginPage() {
-        return "login"; // Dapat match sa filename: login.html
+        return "login"; // Dapat may login.html ka
     }
 
-    // 3. Mapping para sa Registrar Dashboard
-    @GetMapping("/registrar/dashboard")
-    public String showRegistrarDashboard() {
-        return "registrar_dashboard"; // Palitan kung iba ang filename mo, e.g., 'admin.html'
+    // Mapping para sa Registrar Login
+    @GetMapping("/registrar-login")
+    public String showRegistrarLoginPage() {
+        return "registrar_login"; // Palitan kung anong filename ng registrar login mo
     }
 
-    // 4. Mapping para sa Student Dashboard
-    @GetMapping("/student/dashboard")
-    public String showStudentDashboard() {
-        return "student_dashboard"; // Palitan kung iba ang filename mo, e.g., 'home.html'
-    }
+    // ... iba pang mappings (dashboard, etc.)
 }
