@@ -1,17 +1,15 @@
-package com.nsc.registrar_portal; // <--- CHECK MO KUNG TAMA ITO SA FOLDER MO
+package com.nsc.registrar_portal; // Check kung tama ang package!
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.context.annotation.ComponentScan; // Import this
 
 @SpringBootApplication
-// ITO ANG SOLUSYON: Tinitiyak natin na babasahin niya ang tamang folder
-@EntityScan(basePackages = "com.nsc.registrar_portal.entity")
-@EnableJpaRepositories(basePackages = "com.nsc.registrar_portal.repository")
+@ComponentScan(basePackages = "com.nsc") // <--- IDAGDAG MO ITO
 public class RegistrarPortalApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(RegistrarPortalApplication.class, args);
     }
+
 }
